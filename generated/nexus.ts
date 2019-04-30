@@ -19,10 +19,19 @@ export interface NexusGenInputs {
     id?: string | null; // ID
     published?: boolean | null; // Boolean
     title: string; // String!
+    updateAt: any; // DateTime!
   }
   PostWhereInput: { // input type
     AND?: NexusGenInputs['PostWhereInput'][] | null; // [PostWhereInput!]
     author?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
+    createdAt?: any | null; // DateTime
+    createdAt_gt?: any | null; // DateTime
+    createdAt_gte?: any | null; // DateTime
+    createdAt_in?: any[] | null; // [DateTime!]
+    createdAt_lt?: any | null; // DateTime
+    createdAt_lte?: any | null; // DateTime
+    createdAt_not?: any | null; // DateTime
+    createdAt_not_in?: any[] | null; // [DateTime!]
     id?: string | null; // ID
     id_contains?: string | null; // ID
     id_ends_with?: string | null; // ID
@@ -55,6 +64,14 @@ export interface NexusGenInputs {
     title_not_in?: string[] | null; // [String!]
     title_not_starts_with?: string | null; // String
     title_starts_with?: string | null; // String
+    updateAt?: any | null; // DateTime
+    updateAt_gt?: any | null; // DateTime
+    updateAt_gte?: any | null; // DateTime
+    updateAt_in?: any[] | null; // [DateTime!]
+    updateAt_lt?: any | null; // DateTime
+    updateAt_lte?: any | null; // DateTime
+    updateAt_not?: any | null; // DateTime
+    updateAt_not_in?: any[] | null; // [DateTime!]
   }
   PostWhereUniqueInput: { // input type
     id?: string | null; // ID
@@ -118,15 +135,17 @@ export interface NexusGenInputs {
 }
 
 export interface NexusGenEnums {
-  PostOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "published_ASC" | "published_DESC" | "title_ASC" | "title_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
+  PostOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "published_ASC" | "published_DESC" | "title_ASC" | "title_DESC" | "updateAt_ASC" | "updateAt_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
 }
 
 export interface NexusGenRootTypes {
   Mutation: {};
   Post: { // root type
+    createdAt: any; // DateTime!
     id: string; // ID!
     published: boolean; // Boolean!
     title: string; // String!
+    updateAt: any; // DateTime!
   }
   Query: {};
   User: { // root type
@@ -139,6 +158,7 @@ export interface NexusGenRootTypes {
   Float: number;
   Boolean: boolean;
   ID: string;
+  DateTime: any;
 }
 
 export interface NexusGenAllTypes extends NexusGenRootTypes {
@@ -160,9 +180,11 @@ export interface NexusGenFieldTypes {
   }
   Post: { // field return type
     author: NexusGenRootTypes['User'] | null; // User
+    createdAt: any; // DateTime!
     id: string; // ID!
     published: boolean; // Boolean!
     title: string; // String!
+    updateAt: any; // DateTime!
   }
   Query: { // field return type
     feed: NexusGenRootTypes['Post'][]; // [Post!]!
@@ -227,7 +249,7 @@ export type NexusGenEnumNames = "PostOrderByInput";
 
 export type NexusGenInterfaceNames = never;
 
-export type NexusGenScalarNames = "Boolean" | "Float" | "ID" | "Int" | "String";
+export type NexusGenScalarNames = "Boolean" | "DateTime" | "Float" | "ID" | "Int" | "String";
 
 export type NexusGenUnionNames = never;
 

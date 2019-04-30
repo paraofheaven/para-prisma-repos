@@ -14,6 +14,8 @@ type BatchPayload {
   count: Long!
 }
 
+scalar DateTime
+
 scalar Long
 
 type Mutation {
@@ -53,6 +55,8 @@ type Post {
   title: String!
   published: Boolean!
   author: User
+  createdAt: DateTime!
+  updateAt: DateTime!
 }
 
 type PostConnection {
@@ -66,6 +70,7 @@ input PostCreateInput {
   title: String!
   published: Boolean
   author: UserCreateOneWithoutPostsInput
+  updateAt: DateTime!
 }
 
 input PostCreateManyWithoutAuthorInput {
@@ -77,6 +82,7 @@ input PostCreateWithoutAuthorInput {
   id: ID
   title: String!
   published: Boolean
+  updateAt: DateTime!
 }
 
 type PostEdge {
@@ -91,12 +97,18 @@ enum PostOrderByInput {
   title_DESC
   published_ASC
   published_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updateAt_ASC
+  updateAt_DESC
 }
 
 type PostPreviousValues {
   id: ID!
   title: String!
   published: Boolean!
+  createdAt: DateTime!
+  updateAt: DateTime!
 }
 
 input PostScalarWhereInput {
@@ -130,6 +142,22 @@ input PostScalarWhereInput {
   title_not_ends_with: String
   published: Boolean
   published_not: Boolean
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updateAt: DateTime
+  updateAt_not: DateTime
+  updateAt_in: [DateTime!]
+  updateAt_not_in: [DateTime!]
+  updateAt_lt: DateTime
+  updateAt_lte: DateTime
+  updateAt_gt: DateTime
+  updateAt_gte: DateTime
   AND: [PostScalarWhereInput!]
   OR: [PostScalarWhereInput!]
   NOT: [PostScalarWhereInput!]
@@ -157,16 +185,19 @@ input PostUpdateInput {
   title: String
   published: Boolean
   author: UserUpdateOneWithoutPostsInput
+  updateAt: DateTime
 }
 
 input PostUpdateManyDataInput {
   title: String
   published: Boolean
+  updateAt: DateTime
 }
 
 input PostUpdateManyMutationInput {
   title: String
   published: Boolean
+  updateAt: DateTime
 }
 
 input PostUpdateManyWithoutAuthorInput {
@@ -189,6 +220,7 @@ input PostUpdateManyWithWhereNestedInput {
 input PostUpdateWithoutAuthorDataInput {
   title: String
   published: Boolean
+  updateAt: DateTime
 }
 
 input PostUpdateWithWhereUniqueWithoutAuthorInput {
@@ -234,6 +266,22 @@ input PostWhereInput {
   published: Boolean
   published_not: Boolean
   author: UserWhereInput
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updateAt: DateTime
+  updateAt_not: DateTime
+  updateAt_in: [DateTime!]
+  updateAt_not_in: [DateTime!]
+  updateAt_lt: DateTime
+  updateAt_lte: DateTime
+  updateAt_gt: DateTime
+  updateAt_gte: DateTime
   AND: [PostWhereInput!]
   OR: [PostWhereInput!]
   NOT: [PostWhereInput!]

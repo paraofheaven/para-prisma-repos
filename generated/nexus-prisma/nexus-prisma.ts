@@ -304,12 +304,16 @@ type PostObject =
   | { name: 'title', args?: [] | false, alias?: string  } 
   | { name: 'published', args?: [] | false, alias?: string  } 
   | { name: 'author', args?: [] | false, alias?: string  } 
+  | { name: 'createdAt', args?: [] | false, alias?: string  } 
+  | { name: 'updateAt', args?: [] | false, alias?: string  } 
 
 type PostFields =
   | 'id'
   | 'title'
   | 'published'
   | 'author'
+  | 'createdAt'
+  | 'updateAt'
 
 
 
@@ -352,6 +356,22 @@ export interface PostFieldDetails {
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.User | null> | prisma.User | null
+  }
+  createdAt: {
+    type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  updateAt: {
+    type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
   }
 }
   
@@ -1152,11 +1172,15 @@ type PostPreviousValuesObject =
   | { name: 'id', args?: [] | false, alias?: string  } 
   | { name: 'title', args?: [] | false, alias?: string  } 
   | { name: 'published', args?: [] | false, alias?: string  } 
+  | { name: 'createdAt', args?: [] | false, alias?: string  } 
+  | { name: 'updateAt', args?: [] | false, alias?: string  } 
 
 type PostPreviousValuesFields =
   | 'id'
   | 'title'
   | 'published'
+  | 'createdAt'
+  | 'updateAt'
 
 
 
@@ -1181,6 +1205,22 @@ export interface PostPreviousValuesFieldDetails {
   }
   published: {
     type: 'Boolean'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  createdAt: {
+    type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  updateAt: {
+    type: 'DateTime'
     args: {}
     description: string
     list: undefined
@@ -1232,6 +1272,22 @@ export interface PostWhereInput {
   published?: boolean | null
   published_not?: boolean | null
   author?: UserWhereInput | null
+  createdAt?: string | null
+  createdAt_not?: string | null
+  createdAt_in?: string[]
+  createdAt_not_in?: string[]
+  createdAt_lt?: string | null
+  createdAt_lte?: string | null
+  createdAt_gt?: string | null
+  createdAt_gte?: string | null
+  updateAt?: string | null
+  updateAt_not?: string | null
+  updateAt_in?: string[]
+  updateAt_not_in?: string[]
+  updateAt_lt?: string | null
+  updateAt_lte?: string | null
+  updateAt_gt?: string | null
+  updateAt_gte?: string | null
   AND?: PostWhereInput[]
   OR?: PostWhereInput[]
   NOT?: PostWhereInput[]
@@ -1269,6 +1325,22 @@ export type PostWhereInputInputObject =
   | { name: 'published', alias?: string  } 
   | { name: 'published_not', alias?: string  } 
   | { name: 'author', alias?: string  } 
+  | { name: 'createdAt', alias?: string  } 
+  | { name: 'createdAt_not', alias?: string  } 
+  | { name: 'createdAt_in', alias?: string  } 
+  | { name: 'createdAt_not_in', alias?: string  } 
+  | { name: 'createdAt_lt', alias?: string  } 
+  | { name: 'createdAt_lte', alias?: string  } 
+  | { name: 'createdAt_gt', alias?: string  } 
+  | { name: 'createdAt_gte', alias?: string  } 
+  | { name: 'updateAt', alias?: string  } 
+  | { name: 'updateAt_not', alias?: string  } 
+  | { name: 'updateAt_in', alias?: string  } 
+  | { name: 'updateAt_not_in', alias?: string  } 
+  | { name: 'updateAt_lt', alias?: string  } 
+  | { name: 'updateAt_lte', alias?: string  } 
+  | { name: 'updateAt_gt', alias?: string  } 
+  | { name: 'updateAt_gte', alias?: string  } 
   | { name: 'AND', alias?: string  } 
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
@@ -1407,12 +1479,14 @@ export interface PostCreateWithoutAuthorInput {
   id?: string | null
   title?: string
   published?: boolean | null
+  updateAt?: string
 }
 export type PostCreateWithoutAuthorInputInputObject =
   | Extract<keyof PostCreateWithoutAuthorInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'title', alias?: string  } 
   | { name: 'published', alias?: string  } 
+  | { name: 'updateAt', alias?: string  } 
   
 export interface UserUpdateInput {
   email?: string | null
@@ -1460,11 +1534,13 @@ export type PostUpdateWithWhereUniqueWithoutAuthorInputInputObject =
 export interface PostUpdateWithoutAuthorDataInput {
   title?: string | null
   published?: boolean | null
+  updateAt?: string | null
 }
 export type PostUpdateWithoutAuthorDataInputInputObject =
   | Extract<keyof PostUpdateWithoutAuthorDataInput, string>
   | { name: 'title', alias?: string  } 
   | { name: 'published', alias?: string  } 
+  | { name: 'updateAt', alias?: string  } 
   
 export interface PostUpsertWithWhereUniqueWithoutAuthorInput {
   where?: PostWhereUniqueInput
@@ -1508,6 +1584,22 @@ export interface PostScalarWhereInput {
   title_not_ends_with?: string | null
   published?: boolean | null
   published_not?: boolean | null
+  createdAt?: string | null
+  createdAt_not?: string | null
+  createdAt_in?: string[]
+  createdAt_not_in?: string[]
+  createdAt_lt?: string | null
+  createdAt_lte?: string | null
+  createdAt_gt?: string | null
+  createdAt_gte?: string | null
+  updateAt?: string | null
+  updateAt_not?: string | null
+  updateAt_in?: string[]
+  updateAt_not_in?: string[]
+  updateAt_lt?: string | null
+  updateAt_lte?: string | null
+  updateAt_gt?: string | null
+  updateAt_gte?: string | null
   AND?: PostScalarWhereInput[]
   OR?: PostScalarWhereInput[]
   NOT?: PostScalarWhereInput[]
@@ -1544,6 +1636,22 @@ export type PostScalarWhereInputInputObject =
   | { name: 'title_not_ends_with', alias?: string  } 
   | { name: 'published', alias?: string  } 
   | { name: 'published_not', alias?: string  } 
+  | { name: 'createdAt', alias?: string  } 
+  | { name: 'createdAt_not', alias?: string  } 
+  | { name: 'createdAt_in', alias?: string  } 
+  | { name: 'createdAt_not_in', alias?: string  } 
+  | { name: 'createdAt_lt', alias?: string  } 
+  | { name: 'createdAt_lte', alias?: string  } 
+  | { name: 'createdAt_gt', alias?: string  } 
+  | { name: 'createdAt_gte', alias?: string  } 
+  | { name: 'updateAt', alias?: string  } 
+  | { name: 'updateAt_not', alias?: string  } 
+  | { name: 'updateAt_in', alias?: string  } 
+  | { name: 'updateAt_not_in', alias?: string  } 
+  | { name: 'updateAt_lt', alias?: string  } 
+  | { name: 'updateAt_lte', alias?: string  } 
+  | { name: 'updateAt_gt', alias?: string  } 
+  | { name: 'updateAt_gte', alias?: string  } 
   | { name: 'AND', alias?: string  } 
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
@@ -1560,11 +1668,13 @@ export type PostUpdateManyWithWhereNestedInputInputObject =
 export interface PostUpdateManyDataInput {
   title?: string | null
   published?: boolean | null
+  updateAt?: string | null
 }
 export type PostUpdateManyDataInputInputObject =
   | Extract<keyof PostUpdateManyDataInput, string>
   | { name: 'title', alias?: string  } 
   | { name: 'published', alias?: string  } 
+  | { name: 'updateAt', alias?: string  } 
   
 export interface UserUpdateManyMutationInput {
   email?: string | null
@@ -1580,6 +1690,7 @@ export interface PostCreateInput {
   title?: string
   published?: boolean | null
   author?: UserCreateOneWithoutPostsInput | null
+  updateAt?: string
 }
 export type PostCreateInputInputObject =
   | Extract<keyof PostCreateInput, string>
@@ -1587,6 +1698,7 @@ export type PostCreateInputInputObject =
   | { name: 'title', alias?: string  } 
   | { name: 'published', alias?: string  } 
   | { name: 'author', alias?: string  } 
+  | { name: 'updateAt', alias?: string  } 
   
 export interface UserCreateOneWithoutPostsInput {
   create?: UserCreateWithoutPostsInput | null
@@ -1612,12 +1724,14 @@ export interface PostUpdateInput {
   title?: string | null
   published?: boolean | null
   author?: UserUpdateOneWithoutPostsInput | null
+  updateAt?: string | null
 }
 export type PostUpdateInputInputObject =
   | Extract<keyof PostUpdateInput, string>
   | { name: 'title', alias?: string  } 
   | { name: 'published', alias?: string  } 
   | { name: 'author', alias?: string  } 
+  | { name: 'updateAt', alias?: string  } 
   
 export interface UserUpdateOneWithoutPostsInput {
   create?: UserCreateWithoutPostsInput | null
@@ -1657,11 +1771,13 @@ export type UserUpsertWithoutPostsInputInputObject =
 export interface PostUpdateManyMutationInput {
   title?: string | null
   published?: boolean | null
+  updateAt?: string | null
 }
 export type PostUpdateManyMutationInputInputObject =
   | Extract<keyof PostUpdateManyMutationInput, string>
   | { name: 'title', alias?: string  } 
   | { name: 'published', alias?: string  } 
+  | { name: 'updateAt', alias?: string  } 
   
 export interface UserSubscriptionWhereInput {
   mutation_in?: prisma.MutationType[]
@@ -1715,6 +1831,8 @@ export type PostOrderByInputValues =
   | 'published_DESC'
   | 'createdAt_ASC'
   | 'createdAt_DESC'
+  | 'updateAt_ASC'
+  | 'updateAt_DESC'
   | 'updatedAt_ASC'
   | 'updatedAt_DESC'
   
