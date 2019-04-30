@@ -84,7 +84,7 @@ input PostWhereUniqueInput {
 type Query {
   feed: [Post!]!
   post(where: PostWhereUniqueInput!): Post
-  postsByUser(email: String): [Post!]!
+  postsByUser(authorId: ID): [Post!]!
 }
 
 type User {

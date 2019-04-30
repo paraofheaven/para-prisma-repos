@@ -12,13 +12,15 @@ const Query = prismaObjectType({
     t.list.field('feed', {
       type: 'Post',
       resolve: (_, args, ctx) =>
-        ctx.prisma.posts({ where: { published: true } }),
+        ctx.prisma.posts(),
     })
     t.list.field('postsByUser', {
       type: 'Post',
-      args: { email: stringArg() },
-      resolve: (_, { email }, ctx) =>
-        ctx.prisma.posts({ where: { author: { email } } }),
+      args: {
+        authorId: idArg({ nullable: true }),
+      },
+      resolve: (_, { authorId }, ctx) =>
+        ctx.prisma.posts({ where: { author: { id: authorId } } }),
     })
   },
 })

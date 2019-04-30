@@ -198,7 +198,7 @@ export interface NexusGenArgTypes {
       where: NexusGenInputs['PostWhereUniqueInput']; // PostWhereUniqueInput!
     }
     postsByUser: { // args
-      email?: string | null; // String
+      authorId?: string | null; // ID
     }
   }
   User: {
