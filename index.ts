@@ -50,6 +50,9 @@ async function main() {
 
   // const allPosts = await prisma.posts();
   // console.log(allPosts);
+
+  const postsByUser = await prisma.user({ email: 'Chalice@prisma.io' }).posts()
+  console.log(`All posts by that user: ${JSON.stringify(postsByUser)}`)
 }
 
 main().catch(e => console.error(e))
