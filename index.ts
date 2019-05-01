@@ -12,7 +12,7 @@ const Query = prismaObjectType({
     t.list.field('feed', {
       type: 'Post',
       resolve: (_, args, ctx) =>
-        ctx.prisma.posts(),
+        ctx.prisma.posts({ where: { published: true } }),
     })
     t.list.field('postsByUser', {
       type: 'Post',
